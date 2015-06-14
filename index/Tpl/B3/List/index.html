@@ -1,0 +1,27 @@
+<include file="./public/header.html" />
+<include file="./public/title.html" />
+
+<form action="__APP__/List/show_list" method="post">
+    <?php
+        $checked=1;
+        foreach($name_id_list as $name_id){
+            $name=$name_id[0];
+            $id=$name_id[1];
+            if($checked){
+                $checked=0;
+    ?>
+            <input type="radio" name="course" value={$id} checked="checked"/> {$name}
+            <br/>
+    <?php
+            }else{
+    ?>
+            <input type="radio" name="course" value={$id} /> {$name}
+            <br />
+    <?php
+            }
+        }
+    ?>
+    <button type="submit">选择</button>
+</form>
+
+<include file="./public/footer.html" />

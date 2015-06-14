@@ -1,0 +1,42 @@
+<include file="./public/header.html" />
+<include file="./public/title.html" />
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <table class="table table-bordered">
+            <tr>
+                <td>&nbsp;</td>
+                <td>周一</td>
+                <td>周二</td>
+                <td>周三</td>
+                <td>周四</td>
+                <td>周五</td>
+                <td>周六</td>
+                <td>周日</td>
+            </tr>
+            <?php
+                for($r=0;$r<13;$r++){
+            ?>
+                    <tr>
+                        <td>
+                            {$r+1}
+                        </td>
+                        <?php
+                            for($c=0;$c<7;$c++){
+                        ?>
+                            <td>
+                                {$calendar[$c][$r]}
+                            </td>
+                        <?php
+                        }
+                        ?>
+                    </tr>
+            <?php
+                }
+            ?>
+
+        </table>
+    </div>
+</div>
+
+<include file="./public/footer.html" />

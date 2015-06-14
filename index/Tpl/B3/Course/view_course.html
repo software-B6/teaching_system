@@ -1,0 +1,59 @@
+<include file="./public/header.html" />
+<include file="./public/title.html" />
+
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <table class="table table-bordered">
+            <tr>
+                <td>课程名称</td>
+                <td>{$result.course_name}</td>
+                <td>课程编号</td>
+                <td>
+                    {$result.id}
+                </td>
+            </tr>
+            <tr>
+                <td>教师</td>
+                <td>
+                    {$result.teacher_name}
+                </td>
+                <td>教师工号</td>
+                <td>{$result.teacher_id}</td>
+            </tr>
+            <tr>
+                <td>学分</td>
+                <td>
+                    {$result.credit}
+                </td>
+                <td>类别</td>
+                <td>
+                    {$result.type}
+                </td>
+            </tr>
+            <tr>
+                <td>描述</td>
+                <td colspan="3">{$result.course_desc}</td>
+            </tr>
+        </table>
+
+    </div>
+    <div>
+        <div class="btn-group">
+            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                操作
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <!-- dropdown menu links -->
+
+                <li><a href="__APP__/B3/Selection/add/id/{$result.course_class_id}">选课</a></li>
+                <li><a href="__APP__/B3/Selection/drop/id/{$result.course_class_id}">退课</a></li>
+                <li><a href="__APP__/B3/Selection/replenish/id/{$result.course_class_id}">补选</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<include file="./public/footer.html" />

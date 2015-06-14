@@ -1,0 +1,47 @@
+<include file="public/header.html" />
+<include file="public/title.html" />
+
+
+        <center>
+            <dir>欢迎你，{$info['name']}!</dir>
+            <form method="post" action="__URL__/update">
+                <input type="hidden" name="id" value="{$info['id']}"></input>
+                <table>
+                    <tr>
+                        <td>id</td>
+                        <td>{$info['id']}</td>
+                    </tr>
+                    <tr>
+                        <td>姓名</td>
+                        <td>{$info['name']}</td>
+                    </tr>
+                    <tr>
+                        <td>注册时间</td>
+                        <td>{$info['create_time']}</td>
+                    </tr>
+                    <tr>
+                        <td>头衔</td>
+                        <td><input type="text" name="title" value="{$info['title']}"></input></td>
+                    </tr>
+                    <tr>
+                        <td>电话</td>
+                        <td><input type="text" name="phone" value="{$info['phone']}"></input></td>
+                    </tr>
+                    <tr>
+                        <td>邮箱</td>
+                        <td><input type="text" name="email" value="{$info['email']}"></input></td>
+                    </tr>
+                    <tr>
+                        <td>个人简介</td>
+                        <td><input type="text" name="description" rows="10" cols="30" value="{$info['description']}"></input></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="修改"></input></td>
+                    </tr>
+                </table>
+            </form>
+
+            <a href="__URL__/course/id/{$info['id']}">我的课程</a>
+        </center>
+
+<include file="public/footer.html" />

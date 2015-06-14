@@ -1,0 +1,187 @@
+<include file="public/header.html" />
+<include file="public/title.html" />
+<load href="__ROOT__/public/stylesheets/panel.css" />
+
+    <div class="panel panel-default">
+        <div class="panel-heading">设置选课时间</div>
+        <div class="panel-body" style="display:none">
+            <form class="form-horizontal" action="__APP__/B3/Admin/settime" method="post">
+                <div class="control-group form-inline">
+                    <label class="control-label" for="xk1_s">第一轮选课</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="date" id= "xk1_s" name="xk1_s" placeholder="起始时间" value="{$list[0].xk1_s}">&nbsp;&nbsp;<font color="grey">开始</font>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="date" id= "xk1_e" name="xk1_e" placeholder="结束时间" value="{$list[0].xk1_e}">&nbsp;&nbsp;<font color="grey">结束</font>
+                </div>
+                <div class="control-group form-inline">
+                    <label class="control-label" for="bx1_s">第一轮补选</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="date" id= "bx1_s" name="bx1_s" placeholder="起始时间" value="{$list[0].bx1_s}">&nbsp;&nbsp;<font color="grey">开始</font>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="date" id= "bx1_e" name="bx1_e" placeholder="结束时间" value="{$list[0].bx1_e}">&nbsp;&nbsp;<font color="grey">结束</font>
+                </div>
+                <div class="control-group form-inline">
+                    <label class="control-label" for="xk2_s">第二轮选课</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="date" id= "xk2_s" name="xk2_s" placeholder="起始时间" value="{$list[0].xk2_s}">&nbsp;&nbsp;<font color="grey">开始</font>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="date" id= "xk2_e" name="xk2_e" placeholder="结束时间" value="{$list[0].xk2_e}">&nbsp;&nbsp;<font color="grey">结束</font>
+                </div>
+                <div class="control-group form-inline">
+                    <label class="control-label" for="bx2_s">第二轮补选</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="date" id= "bx2_s" name="bx2_s" placeholder="起始时间" value="{$list[0].bx2_s}">&nbsp;&nbsp;<font color="grey">开始</font>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="date" id= "bx2_e" name="bx2_e" placeholder="结束时间" value="{$list[0].bx2_e}">&nbsp;&nbsp;<font color="grey">结束</font>
+                </div>
+                <div class="control-group form-inline">
+                    <label class="control-label" for="xk3_s">第三轮选课</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="date" id= "xk3_s" name="xk3_s" placeholder="起始时间" value="{$list[0].xk3_s}">&nbsp;&nbsp;<font color="grey">开始</font>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="date" id= "xk3_e" name="xk3_e" placeholder="结束时间" value="{$list[0].xk3_e}">&nbsp;&nbsp;<font color="grey">结束</font>
+                </div>
+                <div class="control-group form-inline">
+                    <label class="control-label" for="bx3_s">第三轮补选</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="date" id= "bx3_s" name="bx3_s" placeholder="起始时间" value="{$list[0].bx3_s}">&nbsp;&nbsp;<font color="grey">开始</font>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="date" id= "bx3_e" name="bx3_e" placeholder="结束时间" value="{$list[0].bx3_e}">&nbsp;&nbsp;<font color="grey">结束</font>
+                </div>
+                <!-- <div class="control-group">
+                    <label class="control-label" for="year_id">学期</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <select name="year_id" id="year_id">
+                        <option>2014-2015-1</option>
+                        <option>2014-2015-2</option>
+                        <option>2015-2016-1</option>
+                        <option>2015-2016-2</option>
+                    </select>
+                </div> -->
+                <div class="control-group">
+                    <div class="controls">
+                        <button type="submit" class="btn">提交</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">自动筛选课表</div>
+        <div class="panel-body" style="display:none">
+            <button type="button" id="filter" class="btn btn-default">点击筛选</button>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" onclick="addGet()">补选申请审核</div>
+        <div class="panel-body" style="display:none">
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <table class="table table-bordered" id="addTable">
+                        <!-- AJAX Here... -->
+                    </table>
+                    <div class="control-group">
+                        <div class="controls">
+                            <button type="button" class="btn" id="addBtn">提交</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">学生课程删除</div>
+            <div class="panel-body" style="display:none">
+                <div class="container-fluid">
+                    <div class="row-fluid" id="delTablePar">
+                        <input name="delID" type="text" class="input-large search-query" placeholder="学生编号" id="delID">
+                        <button type="button" class="btn btn-default" id="delSearch" onclick="delGet()">搜索</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<script type="text/javascript">
+    function addGet (argument) {
+        $.get("__APP__/B3/Admin/add",{order: argument},function(data,status){
+            data=eval(data);
+            $("#addTable").html("<tr><td onclick='addGet(3)'>课程编号</td><td onclick='addGet(2)'>课程名称</td><td onclick='addGet(1)'>学生编号</td><td>是否通过</td></tr>")
+            for (var i = data.length - 1; i >= 0; i--) {
+                $("#addTable").append('<tr><td onclick="location=\'__APP__/Course/view/id/'+data[i]['course_class_id']+'\'">'+data[i]['course_class_id']+'</td><td>'+data[i]['name']+'</td><td>'+data[i]['student_id']+'</td><td><label class="checkbox"><input class="addCheck" type="checkbox" value="'+data[i]['id']+'"></label></td></tr>')
+            };
+            //$("#addTable").parent().append('<div class="control-group"><div class="controls"><button type="button" class="btn" onclick="addPost()" id="addBtn">提交</button></div></div>')
+        })
+    }
+
+    function addTmpfun (argument) {
+        $("#addTmp").fadeOut()
+    }
+    $("#addBtn").click(function(){
+        $str=''
+        $(".addCheck:checkbox:checked").each(function(){
+            $str+=$(this).val()+',';
+        })
+        $parent=$(this).parent().parent().parent()
+        $parent.prepend('<div class="control-group" id="addTmp">Please wait a moment...</div>')
+        $.post("__APP__/B3/Admin/addDB",{addstr: $str},function(data,status){
+            if (status=='success'&&data!='Error') {
+                $("#addTmp").html('Finished. Everything is OK.')
+            } else {
+                $("#addTmp").html('Finished. But something wrong.')
+            }
+            addGet()
+            setTimeout(addTmpfun,3000)
+        })
+    })
+
+    function delGet (argument) {
+        $idnum=$("#delID").val()
+        if (!$idnum) {
+            alert('学生编号不可为空')
+        } else {
+            $.get("__APP__/B3/Admin/del",{order: argument,idnum: $idnum},function(data,status){
+                data=eval(data);
+                $("#delTablePar").html("<table class='table table-bordered' id='delTable'><tr><td onclick='delGet(3)'>课程编号</td><td onclick='delGet(2)'>课程名称</td><td onclick='delGet(1)'>已选(1) / 待定(0)</td><td>是否删除</td></tr></table>")
+                for (var i = data.length - 1; i >= 0; i--) {
+                    $("#delTable").append('<tr><td onclick="location=\'__APP__/Course/view/id/'+data[i]['course_class_id']+'\'">'+data[i]['course_class_id']+'</td><td>'+data[i]['name']+'</td><td>'+data[i]['confirmed']+'</td><td><label class="checkbox"><input class="delCheck" type="checkbox" value="'+data[i]['id']+'"></label></td></tr>')
+                };
+                $("#delTable").parent().append('<input value="'+$idnum+'" type="hidden" id="delID"><div class="control-group"><div class="controls"><button type="button" class="btn" onclick="delPost(this)" id="delBtn">提交</button></div></div>')
+            })
+        }
+    }
+
+    function delTmpfun (argument) {
+        $("#delTmp").fadeOut()
+    }
+
+    function delPost (argument) {
+        $str=''
+        $(".delCheck:checkbox:checked").each(function(){
+            $str+=$(this).val()+',';
+        })
+        $parent=$(argument).parent().parent().parent().parent()
+        console.log($str)
+        console.log($parent.html())
+        $parent.prepend('<div class="control-group" id="delTmp">Please wait a moment...</div>')
+        $.post("__APP__/B3/Admin/delDB",{delstr: $str},function(data,status){
+            if (status=='success'&&data!='Error') {
+                $("#delTmp").html('Finished. Everything is OK.')
+            } else {
+                $("#delTmp").html('Finished. But something wrong.')
+            }
+            delGet()
+            setTimeout(delTmpfun,3000)
+        })
+    }
+
+    $(".panel-heading").click(function(){
+        $(this).next().slideToggle()
+    })
+
+    $("#filter").click(function(){
+        $parent=$(this).parent()
+        $parent.html("Please wait a moment...")
+        $.get("__APP__/B3/Admin/filter",function(data,status){
+            $parent.html(data)
+            if (status=='success'&&data!='Error') {
+                $parent.html("Finished. Everything is OK.")
+            } else {
+                $parent.html("Finished. But something wrong.")
+            }
+        })
+    })
+
+</script>
+<include file="public/footer.html" />

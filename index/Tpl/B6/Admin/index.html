@@ -1,0 +1,122 @@
+
+
+<include file="public/header.html" />
+<include file="public/title.html" />
+
+
+                    
+<br>
+<div class="well">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>课程号</th>
+          <th>课程名称</th>
+          <th>学生学号</th>
+          <th>学生姓名</th>
+          <th>原成绩</th>
+          <th>新成绩</th>
+          <th>修改原因</th>
+          <th style="width: 26px;"></th>
+		  <th style="width: 26px;"></th>
+        </tr>
+      </thead>
+      <tbody>
+		  
+		<foreach name="data" item="ha">
+        <tr>
+          <td>{$ha.id}</td>
+          <td>{$ha.course_id}</td>
+          <td>{$ha.course_name}</td>
+          <td>{$ha.student_id}</td>
+          <td>{$ha.student_name}</td>
+          <td>{$ha.old_grade}</td>       
+          <td>{$ha.new_grade}</td>
+          <td>{$ha.reason}</td>
+          <td>
+              <a href="javascript:void(0);"  role="button"  rel = "{$ha.id}" class = "rok"><i class="icon-ok"></i></a>
+          </td>
+          <td>
+              <a href="javascript:void(0);" role="button"  rel = "{$ha.id}" class = "rnok"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+		</foreach>
+       
+      </tbody>
+    </table>
+</div>
+
+
+
+<div class="modal small hide fade" id="agree" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">确认修改</h3>
+    </div>
+    <div class="modal-body">
+        <p class="error-text"><i class="icon-warning-sign modal-icon"></i>你确定要同意本次成绩修改吗？</p>
+    </div>
+    <div class="modal-footer">
+        <button id="ok1" class="btn btn-danger" data-dismiss="modal" data-gid = "NULL" onclick = "agree(this)">确认</button>
+        <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+    </div>
+</div>
+
+
+<div class="modal small hide fade" id="disagree" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">拒绝修改</h3>
+    </div>
+    <div class="modal-body">
+        <p class="error-text"><i class="icon-warning-sign modal-icon"></i>你确定要拒绝本次成绩修改吗？</p>
+    </div>
+    <div class="modal-footer">
+        <button id="ok2" class="btn btn-danger" data-dismiss="modal" data-gid = "NULL" onclick = "disagree(this)">确认</button>
+        <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+    </div>
+</div>
+                    
+            </div>
+        </div>
+    </div>
+    
+   <script type="text/javascript">
+   $(document).ready(function() {
+     $(".rok").click(function() {
+       var id = $(this).attr('rel');
+       $("#agree .modal-footer #ok1").data("gid",id);
+       $("#agree").modal();
+     });
+     $(".rnok").click(function() {
+       var id = $(this).attr('rel');
+       $("#disagree .modal-footer #ok2").data("gid",id);
+       $("#disagree").modal();
+     });
+   });
+   </script>
+   
+   
+	<script type="text/javascript">
+	function agree(obj){
+		
+		// $.post('{:U("B6/Admin/agree")}', {"id":$(obj).data("gid")},
+		// 	    function(data){
+		// 	   	 	window.location.href='{:U("B6/Admin/index")}';
+		// 	      }, "text");
+		$.post('{:U("B6/Admin/agree")}', {id:$(obj).data("gid")}, 
+			function (data){
+				window.location.href='{:U("B6/Admin/index")}';
+			}, 'json');
+	}
+	function disagree(obj){
+		$.post('{:U("B6/Admin/disagree")}', {id:$(obj).data("gid")},
+			function (data){
+				window.location.href='{:U("B6/Admin/index")}';
+			}, 'json');
+	}
+	</script>
+	
+<include file="public/footer.html" />
+

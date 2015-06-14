@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+            <form method="post" action="__URL__/modify_teacher_execute">
+                <input type="hidden" name="id" value="{$data['id']}"></input>
+                <table>
+					<tr>
+                        <td>id</td>
+                        <td>密码</td>
+                        <td>姓名</td>
+                        <td>注册时间</td>
+                        <td>电话</td>
+                        <td>邮箱</td>
+                        <td>职称</td>
+                        <td>描述</td>
+                    </tr>
+                    <tr>
+                        <td>{$data['id']}</td>
+                        <td><input type="text" name="password" value="{$data['password']}"></input></td>
+                        <td><input type="text" name="name" value="{$data['name']}"></input></td>
+                        <td>{$data['create_time']}</td>
+                        <td><input type="text" name="phone" value="{$data['phone']}"></input></td>
+                        <td><input type="text" name="email" value="{$data['email']}"></input></td>
+                        <td><input type="text" name="title" value="{$data['title']}"></input></td>
+                        <td><input type="text" name="description" rows="10" cols="30" value="{$data['description']}"></input></td>
+                        <td><input type="submit" value="修改"></input></td>
+                    </tr>
+                </table>
+            </form>
+</body>
+</html>

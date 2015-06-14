@@ -1,0 +1,60 @@
+<include file="./public/header.html" />
+<include file="./public/title.html" />
+
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <table class="table table-bordered">
+            <tr>
+                <td>编号</td>
+                <td>课程编号</td>
+                <td>课程名称</td>
+                <td>教师</td>
+                <td>学分</td>
+                <td>类别</td>
+                <td>容量</td>
+                <td>已选人数</td>
+                <td>待选人数</td>
+
+            </tr>
+            <foreach name="list" item="vo">
+                <tr onclick="location='__APP__/B3/Course/view/id/{$vo.class_id}'">
+                    <td>
+                        {$vo.class_id}
+                    </td>
+                    <td>
+                        {$vo.course_id}
+                    </td>
+                    <td>
+                        {$vo.course_name}
+                    </td>
+                    <td>
+                        {$vo.teacher_name}
+                    </td>
+                    <td>
+                        {$vo.credit}
+                    </td>
+                    <td>
+                        {$vo.type}
+                    </td>
+                    <td>
+                        {$vo.capacity}
+                    </td>
+                    <td>
+                        {$vo.certainty}
+                    </td>
+                    <td>
+                        {$vo.uncertainty}
+                    </td>
+                </tr>
+
+            </foreach>
+        </table>
+    </div>
+</div>
+
+<include file="./public/footer.html" />
+
+
+
+

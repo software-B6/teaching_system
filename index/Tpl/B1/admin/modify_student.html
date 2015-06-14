@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+            <form method="post" action="__URL__/modify_student_execute">
+                <input type="hidden" name="id" value="{$data['id']}"></input>
+                <table>
+					<tr>
+                        <td>id</td>
+                        <!-- <td>密码</td> -->
+                        <td>姓名</td>
+                        <td>注册时间</td>
+                        <td>电话</td>
+                    </tr>
+                    <tr>
+                        <td>{$data['id']}</td>
+                        <!-- <td><input type="text" name="password" value="{$data['password']}"></input></td> -->
+                        <td><input type="text" name="name" value="{$data['name']}"></input></td>
+                        <td>{$data['create_time']}</td>
+                        <td><input type="text" name="phone" value="{$data['phone']}"></input></td>
+                        <td><input type="submit" value="修改"></input></td>
+                    </tr>
+                </table>
+            </form>
+</body>
+</html>

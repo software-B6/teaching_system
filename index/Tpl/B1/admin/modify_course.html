@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+            <form method="post" action="__URL__/modify_course_execute">
+                <input type="hidden" name="id" value="{$data['id']}"></input>
+                <table>
+					<tr>
+                        <td>id</td>
+                        <td>名称</td>
+                        <td>创建时间</td>
+                        <td>学分</td>
+                        <td>学时</td>
+                        <td>课程类别</td>
+                        <td>课程描述</td>
+                    </tr>
+                    <tr>
+                        <td>{$data['id']}</td>
+                        <td><input type="text" name="name" value="{$data['name']}"></input></td>
+                        <td>{$data['create_time']}</td>
+                        <td><input type="text" name="credit" value="{$data['credit']}"></input></td>
+                        <td><input type="text" name="class" value="{$data['class']}"></input></td>
+                        <td><input type="text" name="type" value="{$data['type']}"></input></td>
+                        <td><input type="text" name="description" rows="10" cols="30" value="{$data['description']}"></input></td>
+                        <td><input type="submit" value="修改"></input></td>
+                    </tr>
+                </table>
+            </form>
+</body>
+</html>

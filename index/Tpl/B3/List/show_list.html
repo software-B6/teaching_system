@@ -1,0 +1,30 @@
+<include file="./public/header.html" />
+<include file="./public/title.html" />
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <table class="table table-bordered">
+            <tr>
+                <td>学生姓名</td>
+                <td>学生专业</td>
+            </tr>
+            <?php
+                foreach($student_info_list as $info){
+                    $name=$info["name"];
+                    $major=$info["major"];
+
+            ?>
+                <tr>
+                    <td>{$name}</td>
+                    <td>{$major}</td>
+                </tr>
+            <?php
+                }
+            ?>
+        </table>
+    </div>
+</div>
+
+
+
+<include file="./public/footer.html" />

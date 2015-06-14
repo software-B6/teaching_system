@@ -1,0 +1,66 @@
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+#map-holder .wrapper {
+  margin-top: 10px;
+  overflow: auto;
+}
+#map-holder .sunburst {
+  float: left;
+  width: 500px;
+  margin-left: -80px;
+}
+#map-holder .sunburst svg {
+  font: 11px 'Source Sans Pro', sans-serif;
+  font-weight: 900;
+  cursor: pointer;
+}
+#map-holder .chart {
+  float: right;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 15px;
+  margin: 80px 20px 0 0;
+}
+#map-holder .chart .breadcumb-text {
+  font-size: 13px;
+  font-weight: 700;
+}
+#map-holder .chart #chart-line {
+  fill: none;
+  stroke-width: 3.5px;
+}
+#map-holder .chart .axis path,
+#map-holder .chart .axis line {
+  fill: none;
+}
+#map-holder .chart .x-axis path,
+#map-holder .chart .y-axis path {
+  stroke: #444;
+  stroke-width: 1px;
+  shape-rendering: geometricPrecision;
+}
+
+.axis path,
+.axis line{
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  font-family: sans-serif;
+  font-size: 11px;
+}

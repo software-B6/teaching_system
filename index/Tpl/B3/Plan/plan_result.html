@@ -1,0 +1,43 @@
+<include file="./public/header.html" />
+<include file="./public/title.html" />
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <table class="table table-bordered">
+            <tr>
+                <td>课程类别</td>
+                <td>课程编号</td>
+                <td>课程名称</td>
+                <td>课程学分</td>
+            </tr>
+            <?php
+                foreach ($data as $type => $list) {
+                    ?>
+                    <tr>
+                        <td>{$type}</td>
+                        <td></td>
+                        <td></td>
+                        <td>至少修满{$list.credit}</td>
+                    </tr>
+                    <?php
+                    foreach ($list['course'] as $value) {
+                        ?>
+                        <tr>
+                            <td>{$type}</td>
+                            <td>{$value.id}</td>
+                            <td>{$value.name}</td>
+                            <td>{$value.credit}</td>
+                        </tr>
+                        <?php
+                    }
+                }
+            ?>
+        </table>
+    </div>
+</div>
+
+<include file="./public/footer.html" />
+
+
+
+
